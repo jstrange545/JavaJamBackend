@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +19,10 @@ public class JavaJamController {
 	MyServiceImpl MyServ;
 	
 	@PostMapping
-	public String saveApplication(@RequestParam("myName") String name, @RequestParam("myEmail") String email, @RequestParam("myExperience") String exp)
+	public ResponseEntity<String> saveApplication(@RequestParam("myName") String name, @RequestParam("myEmail") String email, @RequestParam("myExperience") String exp)
 	{
 		MyServ.saveApplication(name, email, exp);
-		return "Application saved successfully";
+		return ResponseEntity.ok("Application saved successfully");
 	}
 
 }
